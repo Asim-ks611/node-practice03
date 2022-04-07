@@ -1,5 +1,6 @@
-##Load test
-`**loadtest -c 10 --rps 200 http://localhost:8000**`
+##Load test :
+
+`loadtest -c 10 --rps 200 http://localhost:8000`
 
 >loadtest [-n requests] [-c concurrency] [-k] URL
 
@@ -7,3 +8,4 @@
 2. --rps : requests per second
 3. -n : no of requests
 4. -k : means keep alive connection
+5. -t : timelimit ,Max number of seconds to wait until requests no longer go out.
