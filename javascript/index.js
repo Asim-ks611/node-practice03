@@ -142,19 +142,11 @@ let students = {
 //fullName.apply(person,["UttarPradesh"])
 
 ////////////////////// 🟡BIND METHOD🟡 ///////////////////////////////
-// BIND DOESNT CALL THE METHOD DIRECTLY BUT IT RETURNS A FUNCTION
+// BIND DOESNT CALL THE METHOD DIRECTLY BUT IT RETURNS A FUNCTION 
 let myFullName = fullName.bind(students,"Haryana")
 // myFullName()
 
-//// CLOSURES WITH BIND ////
-function f2() {
-    for (var i = 0; i < 3; i++) {
-        setTimeout(
-            (function (x) {console.log(x)}).bind(null,i)
-        , 1000 * i);
-    }
-}
-// f2()
+
 
 /////////////////////////////////////////////////////////////////////
 
@@ -162,8 +154,21 @@ function f2() {
 //A closure is a function having access to the parent scope,
 //*EVEN AFTER THE PARENT FUNCTION HAS CLOSED*.
 
+////// 1.
+// let count = ()=>{
+//    for (var i = 0; i < 5; i++) {
+//     ((x)=>{
+//         setTimeout(() => {
+//             console.log(x);
+//         }, 1000*i) 
+//     }) (i)
+//    }
+// }
+// count()
+
+////// 2. Create a counter function with private variable
 function increment() {
-    var count = 0;
+    var count = 0; //private variable
     const add = () => {
       count = count + 1;
       return count;
@@ -184,7 +189,7 @@ function increment() {
   //     timer(i)
   // }
   
-  
+  //////// Creating function with private variable using Class ///////
   // class Counter{
   //   #count; ///PRIVATE FIELD
   //   constructor(){
@@ -197,6 +202,16 @@ function increment() {
   // mycounter.add()
   // mycounter.add()
   // mycounter.getCount()
+
+  /////// CLOSURES WITH BIND //////
+function f2() {
+    for (var i = 0; i < 3; i++) {
+        setTimeout(
+            ((x)=>console.log(x)).bind(null,i)
+        , 1000 * i);
+    }
+}
+// f2()
   /////////////////////////////////////////////////////
 
   /////////////////🟡 ARRAY POLYFILL 🟡///////////////////  
@@ -414,3 +429,4 @@ const pipe = (...functions) =>{
 // console.log(pipe(double,squares,addTwo)(2)); // 2*2->4^(2)->16+2 = 18
 
 ////////////////////////////////////////////////////////////////
+
